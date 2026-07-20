@@ -1,0 +1,11 @@
+<button
+    class="{{buttonStyle()}}"
+    (click)="clicked.emit()"
+>
+    <div class="{{contentStyle()}}">
+        @if(iconPath()) {
+            <img src="{{iconPath()}}" class="w-8 h-8" alt="Logo"/>
+        }
+        {{text()}}
+    </div>
+</button>
