@@ -1,0 +1,8 @@
+<div class="fixed top-4 right-4 z-50 flex flex-col gap-2">
+    @for (toast of toastService.toasts(); track $index) {
+   <app-toast-card
+        [toast]="toast"
+        (closeToast)="toastService.remove($event)"
+   />
+    }
+</div>

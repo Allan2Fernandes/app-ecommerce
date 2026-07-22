@@ -1,0 +1,12 @@
+<div class="h-10 w-full flex items-center justify-between px-4 bg-neutral-50 border-b border-gray-200 py-2">
+    <div class="h-full flex items-center justify-start cursor-pointer gap-1" (click)="navigateByUrl('/store')">
+        <img src="{{icons.MARKET}}" class="h-full flex-none" alt="Logo"/>
+        {{'TITLE' | translate}}
+    </div>
+    <div class="flex-none flex items-center justify-end gap-2">
+        <app-button
+            text="Logout"
+            (clicked)="logout()"
+        />
+    </div>
+</div>
