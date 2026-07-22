@@ -1,0 +1,113 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <img
+      src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+      alt="Your Company"
+      class="mx-auto h-10 w-auto"
+    />
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight">
+      {{'CREATE_ACCOUNT' | translate}}
+    </h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form class="space-y-6" [formGroup]="form">
+      <!-- Full name -->
+      <div>
+        <label for="name" class="block text-sm/6 font-medium text-gray-400">
+          {{'FULL_NAME' | translate}}
+        </label>
+        <div class="mt-2">
+          <input
+            id="name"
+            type="text"
+            formControlName="fullName"
+            required
+            autocomplete="name"
+            class="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+          />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm/6 font-medium text-gray-400">
+          {{'EMAIL_ADDRESS' | translate}}
+        </label>
+        <div class="mt-2">
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            required
+            autocomplete="email"
+            class="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+          />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label for="password" class="block text-sm/6 font-medium text-gray-400">
+          {{'PASSWORD' | translate}}
+        </label>
+        <div class="mt-2">
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            required
+            autocomplete="new-password"
+            class="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+          />
+        </div>
+      </div>
+
+      <!-- Confirm password -->
+      <div>
+        <label for="password_confirmation" class="block text-sm/6 font-medium text-gray-400">
+          {{'CONFIRM_PASSWORD' | translate}}
+        </label>
+        <div class="mt-2">
+          <input
+            id="password_confirmation"
+            type="password"
+            formControlName="confirmPassword"
+            required
+            autocomplete="new-password"
+            class="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button
+          class="
+            flex w-full justify-center rounded-md
+            bg-indigo-500 px-3 py-1.5
+            text-sm/6 font-semibold text-white
+
+            hover:bg-indigo-400
+            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+
+            disabled:bg-indigo-300
+            disabled:text-white/70
+            disabled:cursor-not-allowed
+            disabled:hover:bg-indigo-300
+          "
+          (click)="submitForm()"
+          [disabled]="!form.valid"
+        >
+        {{'CREATE_ACCOUNT' | translate}}
+        </button>
+      </div>
+    </form>
+
+    <p class="mt-10 text-center text-sm/6 text-gray-400">
+      {{'ALREADY_HAVE_ACCOUNT' | translate}}
+      <a href="/authorization/login" class="font-semibold text-indigo-400 hover:text-indigo-300">
+        {{'SIGN_IN' | translate}}
+      </a>
+    </p>
+  </div>
+</div>

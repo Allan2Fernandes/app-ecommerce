@@ -1,0 +1,23 @@
+<div class="{{cardStyle()}}">
+    <div class="h-10 w-10">
+        @if(toast().type === 'error') {
+            <img src="{{icons.ERROR}}"  alt="error"/>
+        } @else if (toast().type === 'info') {
+            <img src="{{icons.INFO}}"  alt="info"/>
+        } @else if(toast().type === 'warning') {
+            <img src="{{icons.WARNING}}"  alt="warning"/>
+        } @else if(toast().type === 'success') {
+            <img src="{{icons.SUCCESS}}"  alt="success"/>
+        }
+    </div>
+    <div class="flex-3">
+        {{toast().message}}
+    </div>
+    <button
+        class="flex-none"
+        (click)="closeToast.emit(toast().id)"
+        aria-label="Close"
+    >
+        ✕
+    </button>
+</div>
