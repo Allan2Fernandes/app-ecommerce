@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { AuthorizationService } from '../../../services/authorization-service';
 import { TranslatePipe } from "../../../pipes/translate-pipe";
@@ -8,7 +8,7 @@ import { TranslatePipe } from "../../../pipes/translate-pipe";
   imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './signup-component.html',
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit{
   fb = inject(FormBuilder);
   authorizationService = inject(AuthorizationService);
 
@@ -36,6 +36,10 @@ export class SignupComponent {
   {
     validators: this.passwordMatchValidator, // reference the method
   });
+
+  ngOnInit(): void {
+    this.authorizationService.redirectIfAlreadyLoggedIn();
+  }
 
   submitForm() {
     if(

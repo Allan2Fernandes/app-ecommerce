@@ -5,6 +5,7 @@ import { ICONS } from '../../../constants/icons';
 import { TokenService } from '../../../services/token-service';
 import { AuthorizationService } from '../../../services/authorization-service';
 import { TranslatePipe } from "../../../pipes/translate-pipe";
+import { Helper } from '../../../services/helper';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,7 +16,7 @@ export class NavBar implements OnInit{
   icons = ICONS
   ngOnInit(): void {
     
-    if(!this.tokenService.getToken()) {
+    if(Helper.isNullOrUndefined(this.tokenService.getToken())) {
       this.logout();
     }
   }

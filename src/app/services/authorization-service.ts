@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastService } from './toast-service';
 import { TranslationService } from './translation-service';
 import { LoginResponse } from '../models/LoginResponse';
+import { Helper } from './helper';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,7 @@ export class AuthorizationService {
   router = inject(Router);
   toastService = inject(ToastService);
   translateService = inject(TranslationService);
+  
 
   registerUser(name: string, email: string, password: string) {
         this.httpClient.post<{message: string}>('auth/register', {name: name, email: email, password: password})
@@ -69,7 +71,8 @@ export class AuthorizationService {
           id: crypto.randomUUID(),
           type: 'success',
           message: this.translateService.translate("SUCCESSFULLY_LOGGED_OUT")
-        })
+        });
+        this.router.navigateByUrl('authorization/login');
       },
       error: (err) => {
         this.toastService.add({
@@ -79,7 +82,14 @@ export class AuthorizationService {
         });
       }
     });
+  }
 
-    this.router.navigateByUrl('authorization/login');
+  redirectIfAlreadyLoggedIn() {
+    const token = this.tokenService.getToken();
+    if(Helper.isNullOrUndefined(token) || Helper.isEmptyString(token)) {
+      return;
+    }
+    
+    this.router.navigate(['/store']);
   }
 }

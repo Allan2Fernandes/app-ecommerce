@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthorizationService } from '../../../services/authorization-service';
 import { TranslatePipe } from "../../../pipes/translate-pipe";
@@ -8,7 +8,7 @@ import { TranslatePipe } from "../../../pipes/translate-pipe";
   imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './login-component.html',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   fb = inject(FormBuilder);
   authorizationService = inject(AuthorizationService);
 
@@ -16,6 +16,10 @@ export class LoginComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]]
   });
+
+  ngOnInit(): void {
+    this.authorizationService.redirectIfAlreadyLoggedIn();
+  }
 
   login() {
     if(this.form.controls.email.value === null || this.form.controls.password.value === null) {
