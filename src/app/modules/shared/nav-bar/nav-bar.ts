@@ -14,9 +14,10 @@ import { Helper } from '../../../services/helper';
 })
 export class NavBar implements OnInit{
   icons = ICONS
+
   ngOnInit(): void {
-    
-    if(Helper.isNullOrUndefined(this.tokenService.getToken())) {
+    const token = this.tokenService.getToken();
+    if(Helper.isNullOrUndefined(token) || Helper.isEmptyString(token)) {
       this.logout();
     }
   }
