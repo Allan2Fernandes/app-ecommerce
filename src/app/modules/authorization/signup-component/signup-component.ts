@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit{
     confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
   },
   {
-    validators: this.passwordMatchValidator, // reference the method
+    validators: this.passwordMatchValidator,
   });
 
   ngOnInit(): void {

@@ -1,3 +1,15 @@
 {
-  "TITLE": "Market"
+  "TITLE": "Market",
+  "CREATE_ACCOUNT": "Create account",
+  "EMAIL_ADDRESS": "Email address",
+  "FULL_NAME": "Full name",
+  "PASSWORD": "Password",
+  "CONFIRM_PASSWORD": "Confirm password",
+  "FORGOT_PASSWORD": "Forgot passowrd?",
+  "ALREADY_HAVE_ACCOUNT": "Already have an account?",
+  "NOT_MEMBER": "Not a member?",
+  "SIGN_UP_HERE": "Sign up here",
+  "SIGN_IN": "Sign in",
+  "SUCCESSFULLY_LOGGED_IN": "Successfully logged in!",
+  "SUCCESSFULLY_LOGGED_OUT": "Successfull logged out!"
 }
