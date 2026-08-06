@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { TranslatePipe } from "../../../pipes/translate-pipe";
 import { Product } from '../../../models/Product';
 
@@ -10,6 +10,9 @@ import { Product } from '../../../models/Product';
 export class Carousel {
   title = input.required<string>();
   items = input.required<Product[]>();
+  cardClickedEmitter = output<string>();
 
-
+  cardClicked(productid: string) {
+    this.cardClickedEmitter.emit(productid);
+  }
 }

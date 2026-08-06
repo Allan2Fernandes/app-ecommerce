@@ -1,0 +1,9 @@
+<app-nav-bar></app-nav-bar>
+<div class="px-10 py-5 flex flex-col gap-6">
+    <app-bread-crumb [category]="product()?.category ?? undefined" />
+    <app-gallery-component
+        [images]="product()?.images ?? []"
+        [name]="product()?.name ?? ''"
+    />
+</div>
+

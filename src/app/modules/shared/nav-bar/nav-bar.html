@@ -1,12 +1,22 @@
-<div class="h-10 w-full flex items-center justify-between px-4 bg-neutral-50 border-b border-gray-200 py-2">
-    <div class="h-full flex items-center justify-start cursor-pointer gap-1" (click)="navigateByUrl('/store')">
-        <img src="{{icons.MARKET}}" class="h-full flex-none" alt="Logo"/>
-        {{'TITLE' | translate}}
-    </div>
-    <div class="flex-none flex items-center justify-end gap-2">
-        <app-button
-            text="Logout"
-            (clicked)="logout()"
-        />
-    </div>
+<div class="h-16 w-full flex items-center justify-between px-6 bg-white border-b border-gray-200 shadow-sm">
+  <div
+    class="h-full flex items-center justify-start cursor-pointer gap-2 group"
+    (click)="navigateByUrl('/store')"
+  >
+    <img
+      src="{{icons.MARKET}}"
+      class="h-8 w-8 flex-none transition-transform duration-200 group-hover:scale-105"
+      alt="Logo"
+    />
+    <span class="text-lg font-semibold text-gray-900 tracking-tight group-hover:text-purple-600 transition-colors">
+      {{ 'TITLE' | translate }}
+    </span>
+  </div>
+
+  <div class="flex-none flex items-center justify-end gap-3">
+    <app-button
+      text="Logout"
+      (clicked)="logout()"
+    />
+  </div>
 </div>

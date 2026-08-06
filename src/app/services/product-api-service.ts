@@ -16,4 +16,8 @@ export class ProductAPIService {
         map((res) => new Map(Object.entries(res)))
       );
   }
+
+  getProduct(productId: string): Observable<Product> {
+    return this.httpClient.get<Product>(`products/${productId}`);
+  } 
 }

@@ -1,0 +1,12 @@
+@if(!helper.isNullOrUndefined(selectedImage())) {
+    <div class="w-96 h-96 shrink-0 overflow-hidden">
+        <img
+            [src]="selectedImage().url"
+            [alt]="name()"
+            loading="lazy"
+            class="h-full w-full object-cover block"
+        />
+    </div>
+}
+
+

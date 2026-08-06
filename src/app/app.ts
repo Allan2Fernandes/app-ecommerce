@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 
 import { Toast } from "./modules/shared/toast/toast";
 import { RouterOutlet } from "@angular/router";
+import { NavBar } from "./modules/shared/nav-bar/nav-bar";
 
 @Component({
   selector: 'app-root',

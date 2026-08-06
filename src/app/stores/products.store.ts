@@ -6,12 +6,14 @@ import { ProductAPIService } from '../services/product-api-service';
 
 type ProductsState = {
   products: Product[];
+  product: Product | undefined;
   storeFrontProducts: Map<string, Product[]>;
   loading: boolean;
 };
 
 const initialState: ProductsState = {
   products: [],
+  product: undefined,
   storeFrontProducts: new Map(),
   loading: false,
 };
@@ -37,8 +39,24 @@ export const ProductStore = signalStore(
                           message: err.error.message
                         });
                       }
-                })
-            }
+                });
+            },
+            fetchProduct(productid: string) {
+                patchState(store, {loading: true});
+                productAPIService.getProduct(productid).subscribe({
+                  next: (res: Product) => {
+                      patchState(store, {product: res, loading: false});
+                    },
+                    error: (err) => {
+                        patchState(store, {loading: false});
+                        toastService.add({
+                          id: crypto.randomUUID(),
+                          type: 'error',
+                          message: err.error.message
+                        });
+                      }
+                });
+            },
         }
     })
 )

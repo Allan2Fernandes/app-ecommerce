@@ -1,0 +1,16 @@
+@if(!helper.isNullOrUndefined(category())) {
+  @if(category()?.parent_nested) {
+    <app-bread-crumb
+      class="contents"
+      [category]="category()?.parent_nested ?? undefined"
+    />
+  
+    <span class="mx-1.5 text-gray-400 text-sm select-none">-></span>
+  }
+  <span class="text-sm text-gray-500 hover:text-blue-600 hover:underline cursor-pointer transition-colors">
+    {{ category()?.name }}
+  </span>
+}
+
+<!-- Picture(s) -->
+ <!--  -->
