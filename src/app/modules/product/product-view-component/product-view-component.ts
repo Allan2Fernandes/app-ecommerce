@@ -37,7 +37,6 @@ export class ProductViewComponent implements OnInit, OnDestroy {
       this.productId$.pipe(filter(id => !Helper.isEmptyString(id) && !Helper.isNullOrUndefined(id))).subscribe(id => {
         this.productStore.fetchProduct(id);
       }),
-      // this.product$.subscribe(product => console.log(product)),
     );
   }
 
