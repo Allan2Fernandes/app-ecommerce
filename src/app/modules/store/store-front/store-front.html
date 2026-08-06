@@ -1,1 +1,13 @@
-<app-nav-bar></app-nav-bar>
+<div class="w-full h-screen">
+    <app-nav-bar></app-nav-bar>
+    @for (productsOfCategory of productsInStore() | keyvalue; track productsOfCategory.key) {
+        <div class="px-10">
+            <app-carousel 
+                [title]="categoriesInStore().get(productsOfCategory.key)?.name ?? ''"
+                [items]="productsOfCategory.value"
+                (cardClickedEmitter)="routeToProductPage($event)"
+            />
+        </div>
+    }
+</div>
+
