@@ -25,9 +25,9 @@ export const ProductStore = signalStore(
         const productAPIService = inject(ProductAPIService);
         const toastService = inject(ToastService);
         return {
-            fetchStoreFrontProducts() {
+            fetchStoreFrontProducts(limit: number) {
                 patchState(store, {loading: true});
-                productAPIService.getStoreFrontProducts().subscribe({
+                productAPIService.getStoreFrontProducts(limit).subscribe({
                     next: (res: Map<string, Product[]>) => {
                       patchState(store, {storeFrontProducts: res, loading: false});
                     },

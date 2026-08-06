@@ -1,12 +1,28 @@
 @if(!helper.isNullOrUndefined(selectedImage())) {
-    <div class="w-96 h-96 shrink-0 overflow-hidden">
-        <img
-            [src]="selectedImage().url"
-            [alt]="name()"
-            loading="lazy"
-            class="h-full w-full object-cover block"
-        />
-    </div>
+  <div class="relative w-96 h-96 shrink-0 overflow-hidden group">
+    <img
+      [src]="selectedImage().url"
+      [alt]="name()"
+      loading="lazy"
+      class="h-full w-full object-cover block"
+    />
+
+    <button
+      type="button"
+      (click)="previousClicked()"
+      class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow transition-opacity"
+      aria-label="Previous image"
+    >
+      ‹
+    </button>
+
+    <button
+      type="button"
+      (click)="nextClicked()"
+      class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow transition-opacity"
+      aria-label="Next image"
+    >
+      ›
+    </button>
+  </div>
 }
-
-

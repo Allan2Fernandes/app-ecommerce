@@ -13,10 +13,12 @@ import { Router } from '@angular/router';
   imports: [NavBar, KeyValuePipe, Carousel],
   templateUrl: './store-front.html',
 })
-export class StoreFront implements OnInit, OnDestroy {
+export class StoreFront implements OnInit {
   productStore = inject(ProductStore);
   categoriesStore = inject(categoryStore);
   router = inject(Router);
+
+  numProductsPerCategory = 3;
 
   productsInStore = this.productStore.storeFrontProducts;
   productsInStore$ = toObservable(this.productsInStore);
@@ -24,22 +26,13 @@ export class StoreFront implements OnInit, OnDestroy {
   categoriesInStore = this.categoriesStore.categoryMap;
   categoriesInStore$ = toObservable(this.categoriesInStore);
 
-  subscriptions: Subscription[] = [];
 
   ngOnInit(): void {
-    this.productStore.fetchStoreFrontProducts();
+    this.productStore.fetchStoreFrontProducts(this.numProductsPerCategory);
     this.categoriesStore.fetchCategories();
-    this.subscriptions.push(
-      // this.productsInStore$.pipe(skip(1)).subscribe(x => console.log(x)),
-      // this.categoriesInStore$.pipe(skip(1)).subscribe(x => console.log(x)),
-    );
   }
 
   routeToProductPage(productId: string) {
     this.router.navigate([`product/${productId}`]);
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(sub => sub.unsubscribe())
   }
 }

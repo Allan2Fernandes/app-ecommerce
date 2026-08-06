@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../models/Product';
 import { map, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Helper } from './helper';
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +10,15 @@ import { HttpClient } from '@angular/common/http';
 export class ProductAPIService {
   httpClient = inject(HttpClient);
 
-  getStoreFrontProducts(): Observable<Map<string, Product[]>> {
+  getStoreFrontProducts(limit?: number): Observable<Map<string, Product[]>> {
+    let params = new HttpParams();
+
+    if(!Helper.isNullOrUndefined(limit)) {
+      params = params.set('limit', limit.toString());
+    }
+    
     return this.httpClient
-      .get<Record<string, Product[]>>('products/store-front')
+      .get<Record<string, Product[]>>('products/store-front', {params})
       .pipe(
         map((res) => new Map(Object.entries(res)))
       );
