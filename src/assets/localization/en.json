@@ -11,5 +11,9 @@
   "SIGN_UP_HERE": "Sign up here",
   "SIGN_IN": "Sign in",
   "SUCCESSFULLY_LOGGED_IN": "Successfully logged in!",
-  "SUCCESSFULLY_LOGGED_OUT": "Successfull logged out!"
+  "SUCCESSFULLY_LOGGED_OUT": "Successfull logged out!",
+  "404": "404",
+  "PAGE_NOT_FOUND": "Page Not Found",
+  "PAGE_DOES_NOT_EXIST": "Sorry, the page you're looking for doesn't exist or has been moved",
+  "BACK_HOME": "Back to Home"
 }
