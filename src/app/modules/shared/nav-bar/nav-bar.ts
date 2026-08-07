@@ -17,7 +17,7 @@ export class NavBar implements OnInit{
 
   ngOnInit(): void {
     const token = this.tokenService.getToken();
-    if(Helper.isNullOrUndefined(token) || Helper.isEmptyString(token)) {
+    if(Helper.isNullOrUndefined(token) || Helper.isEmptyString(token)) {
       this.logout();
     }
   }
