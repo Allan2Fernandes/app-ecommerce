@@ -1,8 +1,9 @@
 <button
-    class="{{buttonStyle()}}"
+    class="{{buttonStyleMerged()}}"
     (click)="clicked.emit()"
+    [disabled]="disabled()"
 >
-    <div class="{{contentStyle()}}">
+    <div class="{{constentStyleMerged()}}">
         @if(iconPath()) {
             <img src="{{iconPath()}}" class="w-8 h-8" alt="Logo"/>
         }

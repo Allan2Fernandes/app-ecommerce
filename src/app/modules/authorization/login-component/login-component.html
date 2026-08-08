@@ -1,38 +1,50 @@
-<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="mx-auto h-10 w-auto" />
-    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight">{{"SIGN_IN" | translate}}</h2>
+<div class="h-screen w-full flex flex-row overflow-hidden">
+  <div class="flex-1 bg-stone-950 p-10 flex flex-col">
+    <div class="p-15 gap-5 flex flex-col h-full min-h-0">
+      <div class="text-stone-600">Allan Fernandes</div>
+      <div class="text-stone-500 text-7xl font-serif italic">Goods Made to Last</div>
+      <div class="text-stone-500">
+        Curated goods for the considered home — sourced from artisans who work slowly and with purpose
+      </div>
+      <img src="assets/images/ecommerce-login-picture.jpg" class="w-full flex-1 object-cover" alt="logo">
+    </div>
   </div>
 
-  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-6" [formGroup]="form">
-      <div>
-        <label for="email" class="block text-sm/6 font-medium text-gray-400">{{"EMAIL_ADDRESS" | translate}}</label>
-        <div class="mt-2">
-          <input id="email" type="email" formControlName="email" required autocomplete="email" class="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
-        </div>
+  <div class="flex-1 bg-stone-200 p-28">
+    <div class="w-full h-full flex flex-col gap-5">
+
+      <div class="flex flex-col gap-2">
+        <div class="text-5xl font-serif">Welcome Back</div>
+        <div class="text-stone-500 ml-2">Sign in to explore the collection</div>
       </div>
 
-      <div>
-        <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm/6 font-medium text-gray-400">{{"PASSWORD" | translate}}</label>
-          <div class="text-sm">
-            <a href="#" class="font-semibold text-indigo-400 hover:text-indigo-300">{{"FORGOT_PASSWORD" | translate}}</a>
+      <form [formGroup]="form">
+        <div>
+          <label class="text-xs font-mono text-stone-500" for="email" >{{"EMAIL_ADDRESS" | translate}}</label>
+          <div class="mt-2">
+            <input class="bg-stone-300 border border-stone-400 block w-72 rounded-md bg-gray-100 px-3 py-1.5 focus:border-amber-700 focus:outline-none border-2" id="email" type="email" formControlName="email" required autocomplete="email"/>
           </div>
         </div>
-        <div class="mt-2">
-          <input id="password" type="password" formControlName="password" required autocomplete="current-password" class="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+        <div>
+          <label for="password" class="text-xs font-mono text-stone-500">{{"PASSWORD" | translate}}</label>
+          <div class="mt-2">
+            <input id="password" type="password" formControlName="password" required autocomplete="current-password" class="bg-stone-300 border border-stone-400 block w-72 rounded-md bg-gray-100 px-3 py-1.5 focus:border-amber-700 focus:outline-none border-2" />
+          </div>
         </div>
-      </div>
-
-      <div>
-        <button [disabled]="!form.valid" class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" (click)="login()">{{'SIGN_IN' | translate}}</button>
-      </div>
-    </form>
-
-    <p class="mt-10 text-center text-sm/6 text-gray-400">
-      {{"NOT_MEMBER" | translate}}
-      <a href="/authorization/signup" class="font-semibold text-indigo-400 hover:text-indigo-300">{{"SIGN_UP_HERE" | translate}}</a>
-    </p>
+        <div class="mt-8">
+          <app-button
+            [buttonStyle]="'flex items-center justify-center font-medium rounded-lg hover:bg-amber-700 bg-gray-900 w-72 h-10'"
+            [contentStyle]="'flex items-center justify-center px-3 text-stone-200 font-serif'"
+            [text]="'SIGN_IN' | translate"
+            (clicked)="login()"
+            [disabled]="!form.valid"
+          />
+        </div>
+         <p class="mt-6 ml-2 text-sm/6 text-stone-500">
+          {{"NOT_MEMBER" | translate}}
+          <a href="/authorization/signup" class="font-semibold text-stone-500 hover:text-stone-400 underline">{{"SIGN_UP_HERE" | translate}}</a>
+        </p>
+      </form>
+    </div>
   </div>
 </div>

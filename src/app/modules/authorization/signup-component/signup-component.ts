@@ -1,16 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { AuthorizationService } from '../../../services/authorization-service';
 import { TranslatePipe } from "../../../pipes/translate-pipe";
+import { Button } from "../../shared/button/button";
+import { map, Subscription, tap } from 'rxjs';
 
 @Component({
   selector: 'app-signup-component',
-  imports: [ReactiveFormsModule, TranslatePipe],
+  imports: [ReactiveFormsModule, TranslatePipe, Button],
   templateUrl: './signup-component.html',
 })
-export class SignupComponent implements OnInit{
+export class SignupComponent implements OnInit, OnDestroy {
   fb = inject(FormBuilder);
   authorizationService = inject(AuthorizationService);
+
+  subscriptions: Subscription[] = [];
 
   passwordMatchValidator: ValidatorFn = (
     control: AbstractControl
@@ -23,7 +27,6 @@ export class SignupComponent implements OnInit{
     if (!password || !confirmPassword) {
       return null;
     }
-
     return password === confirmPassword ? null : { mismatch: true };
   };
 
@@ -39,6 +42,9 @@ export class SignupComponent implements OnInit{
 
   ngOnInit(): void {
     this.authorizationService.redirectIfAlreadyLoggedIn();
+    this.subscriptions.push(
+      this.form.statusChanges.subscribe(x => console.log(x)),
+    );
   }
 
   submitForm() {
@@ -55,5 +61,9 @@ export class SignupComponent implements OnInit{
       this.form.controls.email.value,
       this.form.controls.password.value
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(x => x.unsubscribe());
   }
 }
