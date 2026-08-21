@@ -1,18 +1,29 @@
-<app-nav-bar></app-nav-bar>
-<div class="px-10 py-5 flex flex-col gap-6">
-  <app-bread-crumb [category]="product()?.category ?? undefined" />
-  <div class="flex flex-row gap-10 max-w-2xl">
-    <app-gallery-component
-      [images]="product()?.images ?? []"
-      [name]="product()?.name ?? ''"
-    />
-    <div class="flex flex-col gap-4 max-w-xl">
-      <h1 class="text-2xl font-semibold text-gray-900">
-        {{ product()?.name }}
-      </h1>
-      <p class="text-base text-gray-600 leading-relaxed">
-        {{ product()?.description }}
-      </p>
+<div class="min-h-screen w-full bg-stone-200">
+  <app-nav-bar></app-nav-bar>
+
+  <div class="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
+    <div class="flex-1 bg-stone-950 p-10 flex items-center justify-center">
+      <div class="w-full max-w-xl">
+        <app-gallery-component
+          [images]="product()?.images ?? []"
+          [name]="product()?.name ?? ''"
+        />
+      </div>
+    </div>
+
+    <div class="flex-1 p-10 md:p-16 lg:p-28 flex flex-col gap-8">
+      <div class="flex flex-wrap items-center">
+        <app-bread-crumb [category]="product()?.category ?? undefined" />
+      </div>
+
+      <div class="flex flex-col gap-4 max-w-xl">
+        <h1 class="text-5xl font-serif text-stone-900">
+          {{ product()?.name }}
+        </h1>
+        <p class="text-stone-500 leading-relaxed">
+          {{ product()?.description }}
+        </p>
+      </div>
     </div>
   </div>
 </div>
