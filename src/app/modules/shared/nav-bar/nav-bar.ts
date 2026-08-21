@@ -14,7 +14,7 @@ import { Helper } from '../../../services/helper';
 })
 export class NavBar implements OnInit{
   icons = ICONS
-  // Test
+  
   ngOnInit(): void {
     const token = this.tokenService.getToken();
     if(Helper.isNullOrUndefined(token) || Helper.isEmptyString(token)) {
