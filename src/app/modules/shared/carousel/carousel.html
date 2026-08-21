@@ -1,43 +1,43 @@
 <div class="w-full">
-  <div class="flex items-center justify-between mb-4">
-    <h2 class="text-xl font-semibold text-gray-900">
+  <div class="flex items-end justify-between mb-8 pb-3 border-b border-stone-400">
+    <h2 class="text-3xl font-serif italic text-stone-800">
       {{ title() | translate }}
     </h2>
   </div>
 
   <div
-    class="flex flex-row flex-nowrap w-full gap-4 overflow-x-auto pb-2
+    class="flex flex-row flex-nowrap w-full gap-6 overflow-x-auto pt-1 pb-4
            snap-x snap-mandatory scroll-smooth
            [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
   >
     @for (item of items(); track item.id) {
       <div
         (click)="cardClicked(item.id)"
-        class="group snap-start shrink-0 w-44 rounded-xl border border-gray-200 bg-white
-               shadow-sm overflow-hidden cursor-pointer
+        class="group snap-start shrink-0 w-80 rounded-xl border-2 border-stone-400 bg-stone-100
+               cursor-pointer
                transition-all duration-200 ease-out
-               hover:shadow-lg hover:-translate-y-1 hover:border-purple-300"
+               hover:shadow-xl hover:-translate-y-1 hover:border-amber-700"
       >
-        <div class="h-44 w-full bg-gray-100 overflow-hidden">
+        <div class="h-80 w-full bg-stone-300 overflow-hidden rounded-t-[0.65rem]">
           <img
             [src]="item.images[0].url"
             [alt]="item.name"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
         </div>
 
-        <div class="p-3">
-          <p class="font-medium text-sm text-gray-900 truncate group-hover:text-purple-600 transition-colors">
+        <div class="p-5 flex flex-col gap-2">
+          <p class="text-xs font-mono tracking-wider uppercase text-stone-500">
+            {{ item.category.name }}
+          </p>
+
+          <p class="font-serif text-xl text-stone-900 leading-snug group-hover:text-amber-700 transition-colors">
             {{ item.name }}
           </p>
 
-          <p class="text-xs text-gray-500 mt-1 line-clamp-2">
+          <p class="text-sm text-stone-500 leading-relaxed line-clamp-2">
             {{ item.description }}
-          </p>
-
-          <p class="mt-2 text-xs text-purple-600 font-medium">
-            {{ item.category.name }}
           </p>
         </div>
       </div>

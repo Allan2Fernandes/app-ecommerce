@@ -1,13 +1,32 @@
-<div class="w-full h-screen">
+<div class="min-h-screen w-full bg-stone-200">
     <app-nav-bar></app-nav-bar>
-    @for (productsOfCategory of productsInStore() | keyvalue; track productsOfCategory.key) {
-        <div class="px-10">
-            <app-carousel 
-                [title]="categoriesInStore().get(productsOfCategory.key)?.name ?? ''"
-                [items]="productsOfCategory.value"
-                (cardClickedEmitter)="routeToProductPage($event)"
-            />
-        </div>
-    }
-</div>
 
+    <div class="relative bg-stone-950 overflow-hidden">
+        <div class="absolute inset-0">
+            <img
+                src="assets/images/ecommerce-login-picture.jpg"
+                class="w-full h-full object-cover opacity-25"
+                alt="Curated goods"
+            >
+        </div>
+        <div class="relative px-10 md:px-16 py-16 flex flex-col gap-5 max-w-4xl">
+            <div class="text-stone-600">Allan Fernandes</div>
+            <div class="text-stone-400 text-6xl md:text-7xl font-serif italic">Goods Made to Last</div>
+            <div class="text-stone-500 max-w-xl">
+                Curated goods for the considered home — sourced from artisans who work slowly and with purpose
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-14 py-14">
+        @for (productsOfCategory of productsInStore() | keyvalue; track productsOfCategory.key) {
+            <div class="px-10 md:px-16">
+                <app-carousel
+                    [title]="categoriesInStore().get(productsOfCategory.key)?.name ?? ''"
+                    [items]="productsOfCategory.value"
+                    (cardClickedEmitter)="routeToProductPage($event)"
+                />
+            </div>
+        }
+    </div>
+</div>
