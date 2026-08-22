@@ -1,0 +1,13 @@
+<div
+    class="flex items-center gap-2"
+>
+    <div class="flex text-sm leading-none" aria-hidden="true">
+        @for (star of stars; track star) {
+            <span [class]="isStarFilled(star, (averageRating$ | async) ?? 0) ? 'text-amber-700' : 'text-stone-300'">★</span>
+        }
+    </div>
+    <span class="text-xs font-mono tracking-wider text-stone-500">
+        {{ formattedAverage$ | async }}
+        · {{ reviews().length }} {{ reviews().length === 1 ? 'review' : 'reviews' }}
+    </span>
+</div>

@@ -1,28 +1,58 @@
 <div class="min-h-screen w-full bg-stone-200">
   <app-nav-bar></app-nav-bar>
 
-  <div class="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
-    <div class="flex-1 bg-stone-950 p-10 flex items-center justify-center">
-      <div class="w-full max-w-xl">
+  <div class="max-w-6xl mx-auto px-12 py-16">
+    <div class="mb-8">
+      <app-bread-crumb [category]="product()?.category ?? undefined" />
+    </div>
+
+    <div class="grid grid-cols-2 gap-16 items-start">
+      <div class="bg-stone-950 p-8 rounded-lg sticky top-16">
         <app-gallery-component
           [images]="product()?.images ?? []"
           [name]="product()?.name ?? ''"
         />
       </div>
-    </div>
 
-    <div class="flex-1 p-10 md:p-16 lg:p-28 flex flex-col gap-8">
-      <div class="flex flex-wrap items-center">
-        <app-bread-crumb [category]="product()?.category ?? undefined" />
-      </div>
-
-      <div class="flex flex-col gap-4 max-w-xl">
-        <h1 class="text-5xl font-serif text-stone-900">
+      <div class="flex flex-col gap-6 pt-4">
+        <h1 class="text-4xl font-serif text-stone-900">
           {{ product()?.name }}
         </h1>
-        <p class="text-stone-500 leading-relaxed">
+
+        <app-ratings-component [reviews]="product()?.reviews ?? []" />
+
+        <div class="w-16 h-px bg-stone-400"></div>
+
+        <p class="text-stone-600 leading-relaxed text-lg">
           {{ product()?.description }}
         </p>
+      </div>
+    </div>
+
+    <div class="mt-20 pt-12 border-t border-stone-400">
+      <h2 class="text-2xl font-serif text-stone-900 mb-8">
+        Reviews
+      </h2>
+
+      <div class="flex flex-col gap-8 max-w-2xl">
+        @for (review of product()?.reviews ?? []; track review.id) {
+          <div class="flex flex-col gap-2 pb-8 border-b border-stone-300">
+            <div class="flex items-center gap-3">
+              <div class="flex text-sm leading-none" aria-hidden="true">
+                @for (star of [1,2,3,4,5]; track star) {
+                  <span [class]="star <= review.rating ? 'text-amber-700' : 'text-stone-300'">★</span>
+                }
+              </div>
+              <span class="text-sm font-medium text-stone-900">{{ review.reviewer.name }}</span>
+            </div>
+
+            <p class="text-stone-600 leading-relaxed">
+              {{ review.explanation }}
+            </p>
+          </div>
+        } @empty {
+          <p class="text-stone-500 text-sm">No reviews yet.</p>
+        }
       </div>
     </div>
   </div>

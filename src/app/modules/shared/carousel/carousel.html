@@ -5,24 +5,17 @@
     </h2>
   </div>
 
-  <div
-    class="flex flex-row flex-nowrap w-full gap-6 overflow-x-auto pt-1 pb-4
-           snap-x snap-mandatory scroll-smooth
-           [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-  >
+  <div class="flex gap-6 overflow-x-auto pb-4">
     @for (item of items(); track item.id) {
       <div
         (click)="cardClicked(item.id)"
-        class="group snap-start shrink-0 w-80 rounded-xl border-2 border-stone-400 bg-stone-100
-               cursor-pointer
-               transition-all duration-200 ease-out
-               hover:shadow-xl hover:-translate-y-1 hover:border-amber-700"
+        class="shrink-0 w-80 rounded-xl border-2 border-stone-400 bg-stone-100 cursor-pointer hover:border-amber-700"
       >
         <div class="h-80 w-full bg-stone-300 overflow-hidden rounded-t-[0.65rem]">
           <img
             [src]="item.images[0].url"
             [alt]="item.name"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            class="w-full h-full object-cover"
             loading="lazy"
           />
         </div>
@@ -32,31 +25,10 @@
             {{ item.category.name }}
           </p>
 
-          <p class="font-serif text-xl text-stone-900 leading-snug group-hover:text-amber-700 transition-colors">
+          <p class="font-serif text-xl text-stone-900 leading-snug">
             {{ item.name }}
           </p>
-
-          @if (reviewMapSig()?.get(item.id); as rating) {
-            <div
-              class="flex items-center gap-2"
-              [attr.aria-label]="'Average rating ' + rating.formattedAverage + ' out of 5 from ' + rating.reviewCount + ' reviews'"
-            >
-              <div class="flex text-sm leading-none" aria-hidden="true">
-                @for (star of stars; track star) {
-                  <span [class]="isStarFilled(star, rating.averagerating ?? 0) ? 'text-amber-700' : 'text-stone-300'">★</span>
-                }
-              </div>
-              <span class="text-xs font-mono tracking-wider text-stone-500">
-                {{ rating.formattedAverage }}
-                · {{ rating.reviewCount }} {{ rating.reviewCount === 1 ? 'review' : 'reviews' }}
-              </span>
-            </div>
-          } @else {
-            <p class="text-xs font-mono tracking-wider uppercase text-stone-400">
-              No reviews yet
-            </p>
-          }
-
+          <app-ratings-component [reviews]="item.reviews"/>
           <p class="text-sm text-stone-500 leading-relaxed line-clamp-2">
             {{ item.description }}
           </p>
