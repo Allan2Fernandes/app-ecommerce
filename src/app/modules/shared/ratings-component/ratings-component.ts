@@ -4,10 +4,11 @@ import { BehaviorSubject, filter, Subscription } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { Helper } from '../../../services/helper';
 import { AsyncPipe } from '@angular/common';
+import { TranslatePipe } from '../../../pipes/translate-pipe';
 
 @Component({
   selector: 'app-ratings-component',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, TranslatePipe],
   templateUrl: './ratings-component.html',
 })
 export class RatingsComponent implements OnInit, OnDestroy  {
