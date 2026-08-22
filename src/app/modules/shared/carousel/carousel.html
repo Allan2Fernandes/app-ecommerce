@@ -36,6 +36,27 @@
             {{ item.name }}
           </p>
 
+          @if (reviewMapSig()?.get(item.id); as rating) {
+            <div
+              class="flex items-center gap-2"
+              [attr.aria-label]="'Average rating ' + rating.formattedAverage + ' out of 5 from ' + rating.reviewCount + ' reviews'"
+            >
+              <div class="flex text-sm leading-none" aria-hidden="true">
+                @for (star of stars; track star) {
+                  <span [class]="isStarFilled(star, rating.averagerating ?? 0) ? 'text-amber-700' : 'text-stone-300'">★</span>
+                }
+              </div>
+              <span class="text-xs font-mono tracking-wider text-stone-500">
+                {{ rating.formattedAverage }}
+                · {{ rating.reviewCount }} {{ rating.reviewCount === 1 ? 'review' : 'reviews' }}
+              </span>
+            </div>
+          } @else {
+            <p class="text-xs font-mono tracking-wider uppercase text-stone-400">
+              No reviews yet
+            </p>
+          }
+
           <p class="text-sm text-stone-500 leading-relaxed line-clamp-2">
             {{ item.description }}
           </p>

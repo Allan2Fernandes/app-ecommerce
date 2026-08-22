@@ -18,7 +18,7 @@ export class StoreFront implements OnInit {
   categoriesStore = inject(categoryStore);
   router = inject(Router);
 
-  numProductsPerCategory = 30;
+  numProductsPerCategory = 3;
 
   productsInStore = this.productStore.storeFrontProducts;
   productsInStore$ = toObservable(this.productsInStore);
