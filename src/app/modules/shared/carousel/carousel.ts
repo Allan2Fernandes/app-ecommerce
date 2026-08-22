@@ -5,10 +5,11 @@ import { toObservable } from '@angular/core/rxjs-interop';
 import { filter, Subscription } from 'rxjs';
 import { Helper } from '../../../services/helper';
 import { RatingsComponent } from "../ratings-component/ratings-component";
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-carousel',
-  imports: [TranslatePipe, RatingsComponent],
+  imports: [TranslatePipe, RatingsComponent, CurrencyPipe ],
   templateUrl: './carousel.html',
 })
 export class Carousel {

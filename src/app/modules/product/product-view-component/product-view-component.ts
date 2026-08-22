@@ -8,10 +8,11 @@ import { ProductStore } from '../../../stores/products.store';
 import { BreadCrumb } from "../../shared/bread-crumb/bread-crumb";
 import { GalleryComponent } from "../../shared/gallery-component/gallery-component";
 import { RatingsComponent } from "../../shared/ratings-component/ratings-component";
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-view-component',
-  imports: [NavBar, BreadCrumb, GalleryComponent, RatingsComponent],
+  imports: [NavBar, BreadCrumb, GalleryComponent, RatingsComponent, CurrencyPipe],
   templateUrl: './product-view-component.html',
 })
 export class ProductViewComponent implements OnInit, OnDestroy {
