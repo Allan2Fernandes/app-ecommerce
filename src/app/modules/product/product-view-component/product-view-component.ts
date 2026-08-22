@@ -7,10 +7,11 @@ import { toObservable } from '@angular/core/rxjs-interop';
 import { ProductStore } from '../../../stores/products.store';
 import { BreadCrumb } from "../../shared/bread-crumb/bread-crumb";
 import { GalleryComponent } from "../../shared/gallery-component/gallery-component";
+import { RatingsComponent } from "../../shared/ratings-component/ratings-component";
 
 @Component({
   selector: 'app-product-view-component',
-  imports: [NavBar, BreadCrumb, GalleryComponent],
+  imports: [NavBar, BreadCrumb, GalleryComponent, RatingsComponent],
   templateUrl: './product-view-component.html',
 })
 export class ProductViewComponent implements OnInit, OnDestroy {
