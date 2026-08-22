@@ -7,6 +7,7 @@ export interface Product {
   category_id: string;
   name: string;
   description: string;
+  price: number;
   category: Category;
   images: Image[];
   reviews: Review[];

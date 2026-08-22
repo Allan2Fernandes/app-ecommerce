@@ -19,6 +19,10 @@
           {{ product()?.name }}
         </h1>
 
+        <p class="text-3xl font-serif text-stone-900">
+          {{ product()?.price | currency:'INR' }}
+        </p>
+
         <app-ratings-component [reviews]="product()?.reviews ?? []" />
 
         <div class="w-16 h-px bg-stone-400"></div>
