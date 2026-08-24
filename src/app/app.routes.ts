@@ -20,6 +20,10 @@ export const routes: Routes = [
         loadChildren: () => import('./modules/product/product-module').then(m => m.ProductModule),
     },
     {
+        path: 'wishlist',
+        loadChildren: () => import('./modules/wishlists/wishlists-module').then(m => m.WishlistsModule),
+    },
+    {
         path: 'not-found',
         component: PageNotFoundComponent
     },

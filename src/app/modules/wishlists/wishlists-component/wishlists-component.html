@@ -1,0 +1,73 @@
+<div class="min-h-screen w-full bg-stone-200 flex flex-col">
+    <div class="flex-none">
+        <app-nav-bar></app-nav-bar>
+    </div>
+    
+    <div class="px-20 py-10 flex-1 flex flex-col gap-5">
+        <div class="flex flex-row items-center justify-between w-full h-20">
+            <div class="flex flex-col gap-2">
+                <div class="text-stone-600 text-6xl md:text-6xl font-instrument-serif italic">
+                My Wishlists
+                </div>
+                <div class="font-inter text-stone-400">
+                    Organize your favourite findings into bespoke collections
+                </div>
+            </div>
+            <div>
+                <app-button 
+                [text]="'Create Wishlist'"
+                [buttonStyle]="'flex items-center justify-center font-medium rounded-lg hover:bg-amber-700 bg-gray-900 h-10'"
+                [contentStyle]="'flex items-center justify-center px-4 text-stone-200 font-serif gap-2 text-sm'"
+                [iconPath]="Icons.PLUS"
+                [imageStyle]="'brightness-0 invert size-4'"
+                />
+            </div>
+        </div>
+        <div class="flex flex-row flex-wrap gap-5">
+            @for (wishlist of wishlists(); track $index) {
+                <div class="border-1 border-stone-400 bg-white size-96 flex flex-col gap-2">
+                    <div class="grid grid-cols-2 grid-rows-2 gap-1 flex-1 overflow-hidden">
+                        @for (product of wishlist.products.slice(0, 4); track product.id) {
+                            <div class="w-full h-full overflow-hidden bg-stone-100">
+                                <img
+                                    [src]="product.images[0].url"
+                                    [alt]="product.name"
+                                    loading="lazy"
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                        }
+                        @for(i of (emptySpacesMap()?.get(wishlist.id)?.emptySpacesList); track $index) {
+                            <div class="w-full h-full overflow-hidden bg-stone-100">
+                                <img
+                                    [src]="'assets/images/image-not-found.png'"
+                                    loading="lazy"
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                           
+                        }
+                    </div>
+                    <div class="flex-none">
+                        {{wishlist.title}}
+                    </div>
+                </div>
+            }
+            
+            <div class="border-dashed border-1 border-stone-400 size-96 flex items-center justify-center cursor-pointer">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="bg-gray-300 rounded-full size-10 p-2">
+                        <img src="{{Icons.PLUS}}" alt="Logo"/>
+                    </div>
+                    <div class="font-bold text-base">
+                        Create a new wishlist 
+                    </div>
+                    <div class="text-sm text-stone-400">
+                        Group up your products
+                    </div>
+                </div>
+            </div>
+        
+        
+    </div>
+</div>
