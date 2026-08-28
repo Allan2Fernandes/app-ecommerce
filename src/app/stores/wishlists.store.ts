@@ -28,14 +28,31 @@ export const WishlistStore = signalStore(
                       patchState(store, {wishlists: res, loading: false});
                     },
                     error: (err) => {
-                        patchState(store, {loading: false});
-                        toastService.add({
-                          id: crypto.randomUUID(),
-                          type: 'error',
-                          message: err.error.message
-                        });
-                      }
+                      patchState(store, {loading: false});
+                      toastService.add({
+                        id: crypto.randomUUID(),
+                        type: 'error',
+                        message: err.error.message
+                      });
+                    }
                 })
+            },
+            deleteWishlist(id: string) {
+              patchState(store, {loading: false});
+              wishlistApiService.deleteWishlist(id).subscribe({
+                next: () => {
+                  patchState(store, {wishlists: store.wishlists().filter(wishlist => wishlist.id !== id),loading: false});
+                  
+                },
+                error: (err) => {
+                  patchState(store, {loading: false});
+                  toastService.add({
+                    id: crypto.randomUUID(),
+                    type: 'error',
+                    message: err.error.message
+                  });
+                }
+              })
             }
         }
     }),

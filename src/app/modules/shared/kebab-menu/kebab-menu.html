@@ -1,0 +1,22 @@
+<div
+  class="relative size-6 p-1 rounded-full hover:bg-stone-200 hover:cursor-pointer"
+  (click)="toggleMenu()"
+>
+  <img src="{{icons.KEBAB_MENU}}" alt="Menu" />
+
+  @if (showMenu()) {
+  <div
+    class="absolute left-0 top-full mt-1 z-10 w-44 rounded-lg border border-stone-200 bg-white py-1 shadow-lg"
+    (click)="$event.stopPropagation()"
+  >
+    @for (menuOption of menuOptions(); track $index) {
+    <div
+      class="px-3 py-2 text-sm text-stone-700 hover:bg-stone-100 hover:cursor-pointer"
+      (click)="optionClicked.emit(menuOption)"
+    >
+      {{ menuOption.label  | translate}}
+    </div>
+    }
+  </div>
+  }
+</div>

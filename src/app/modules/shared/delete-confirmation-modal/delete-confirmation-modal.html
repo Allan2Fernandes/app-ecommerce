@@ -1,0 +1,24 @@
+<app-base-modal
+    (closed)="closed.emit(false)"
+>
+    <div modal-header>
+        <div class="flex flex-row gap-2 w-full items-center">
+            <img
+                [src]="icons.WARNING"
+                alt="warning"
+                class="h-5 w-5 object-contain"
+            />
+            {{ data().title | translate }}
+        </div>
+    </div>
+    <div modal-body>{{data().body | translate}}</div>
+
+    <div modal-footer>
+        <app-button [text]="'CANCEL' | translate"
+            (clicked)="closed.emit(false)"
+        />
+        <app-button [text]="'DELETE' | translate"
+            (clicked)="closed.emit(true)"
+        />
+    </div>
+</app-base-modal>

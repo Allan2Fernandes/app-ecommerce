@@ -8,7 +8,12 @@ import { Wishlist } from '../models/Wishlist';
 })
 export class WishlistApiService {
   httpClient = inject(HttpClient);
+
   getWishlists(): Observable<Wishlist[]> {
     return this.httpClient.get<Wishlist[]>("wishlists");
+  }
+
+  deleteWishlist(id: string): Observable<void> {
+    return this.httpClient.delete<void>(`wishlists/${id}`);
   }
 }

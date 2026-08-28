@@ -25,7 +25,7 @@
         </div>
         <div class="flex flex-row flex-wrap gap-5">
             @for (wishlist of wishlists(); track $index) {
-                <div class="border-1 border-stone-400 bg-white size-96 flex flex-col gap-2">
+                <div class="border-1 border-stone-400 bg-white size-96 flex flex-col">
                     <div class="grid grid-cols-2 grid-rows-2 gap-1 flex-1 overflow-hidden">
                         @for (product of wishlist.products.slice(0, 4); track product.id) {
                             <div class="w-full h-full overflow-hidden bg-stone-100">
@@ -48,8 +48,21 @@
                            
                         }
                     </div>
-                    <div class="flex-none">
-                        {{wishlist.title}}
+                    <div class="flex-none flex flex-row justify-between items-center px-4 py-1">
+                        <div class="flex flex-col">
+                            <div class="font-bold text-sm">
+                                {{wishlist.title}}
+                            </div>
+                            <div class="text-xs text-stone-400">
+                                {{`${wishlist.products.length} items`}}
+                            </div>
+                        </div>
+                        <div>
+                            <app-kebab-menu
+                                [menuOptions]="menuOptions"
+                                (optionClicked)="optionClicked($event, wishlist.id)"
+                            />
+                        </div>
                     </div>
                 </div>
             }
