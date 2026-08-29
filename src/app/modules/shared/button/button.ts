@@ -11,13 +11,16 @@ export class Button {
   iconPath = input<string>();
   buttonStyle = input<string>('');
   contentStyle = input<string>('');
+  imageStyle = input<string>('');
   disabled = input<boolean>(false);
 
   clicked = output<void>();
 
   buttonStyleBase = 'flex items-center font-medium rounded-lg hover:bg-blue-300';
   contentStyleBase = 'flex items-center justify-center px-3 text-gray-900'
+  imageStyleBase = 'w-8 h-8';
 
   buttonStyleMerged = computed(() => twMerge(this.buttonStyleBase, this.buttonStyle(), this.disabled() ? 'bg-gray-400 hover:bg-gray-500 cursor-not-allowed' : ''));
-  constentStyleMerged = computed(() => twMerge(this.contentStyleBase, this.contentStyle()));
+  contentStyleMerged = computed(() => twMerge(this.contentStyleBase, this.contentStyle()));
+  imageStyleMerged = computed(() => twMerge(this.imageStyleBase, this.imageStyle()));
 }

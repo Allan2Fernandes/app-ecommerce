@@ -17,5 +17,18 @@
   "PAGE_DOES_NOT_EXIST": "Sorry, the page you're looking for doesn't exist or has been moved",
   "BACK_HOME": "Back to Home",
   "NO_REVIEWS_YET": "No reviews yet",
-  "REVIEWS": "Reviews"
+  "REVIEWS": "Reviews",
+  "WISHLISTS": "Wishlists",
+  "DELETE_WISHLIST": "Delete wishlist",
+  "DELETE_WISHLIST_BODY": "Are you sure you want to delete this wishlist?",
+  "MY_WISHLISTS": "My Wishlists",
+  "MY_WISHLISTS_PAGE_DESCRIPTION": "Organize your favourite findings into bespoke collections",
+  "CREATE_WISHLIST_BUTTON": "Create Wishlist",
+  "CREATE_WISHLIST": "Create a new wishlist",
+  "CREATE_WISHLIST_DESCRIPTION": "Group up your products",
+  "LOGOUT": "Logout",
+  "EDIT_WISHLIST": "Edit wishlist",
+  "VIEW_WISHLIST": "View wishlist",
+  "CREATE_WISHLIST_BODY": "Enter the name of the new wishlist",
+  "EDIT_WISHLIST_BODY": "Enter the new name of the wishlist"
 }

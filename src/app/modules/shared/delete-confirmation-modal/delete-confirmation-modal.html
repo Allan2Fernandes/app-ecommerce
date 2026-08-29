@@ -1,0 +1,31 @@
+<app-base-modal
+    (closed)="closed.emit(false)"
+>
+    <div modal-header>
+        <div class="flex flex-row gap-2 w-full items-center">
+            <img
+                [src]="icons.WARNING"
+                alt="warning"
+                class="h-5 w-5 object-contain"
+            />
+            {{ data().title | translate }}
+        </div>
+    </div>
+    <div modal-body>{{data().body | translate}}</div>
+
+    <div modal-footer>
+        <div class="flex flex-row gap-2">
+            <app-button [text]="'CANCEL' | translate"
+                [buttonStyle]="'flex items-center justify-center font-medium rounded-lg hover:bg-amber-700 bg-gray-900 h-10'"
+                [contentStyle]="'flex items-center justify-center px-4 text-stone-200 font-serif gap-2 text-sm'"
+                (clicked)="closed.emit(false)"
+            />
+            <app-button [text]="'DELETE' | translate"
+                [buttonStyle]="'flex items-center justify-center font-medium rounded-lg hover:bg-amber-700 bg-gray-900 h-10'"
+                [contentStyle]="'flex items-center justify-center px-4 text-stone-200 font-serif gap-2 text-sm'"
+                (clicked)="closed.emit(true)"
+            />
+        </div>
+        
+    </div>
+</app-base-modal>

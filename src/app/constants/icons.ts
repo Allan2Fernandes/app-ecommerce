@@ -4,5 +4,7 @@ export enum ICONS {
   WARNING = './assets/icons/warning.svg',
   ERROR = './assets/icons/error.svg',
   INFO = './assets/icons/info.svg',
-  MARKET = './assets/icons/market.svg'
+  MARKET = './assets/icons/market.svg',
+  WISHLIST = './assets/icons/wishlist.svg',
+  KEBAB_MENU = './assets/icons/kebab-menu.svg'
 }

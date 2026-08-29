@@ -1,0 +1,38 @@
+<app-base-modal
+    (closed)="closed.emit(undefined)"
+>
+    <div modal-header>
+        {{data().title}}
+    </div>
+    <div modal-body>
+         <form [formGroup]="form">
+            <div>
+                <label class="block text-sm font-medium mb-1">{{data().body}}</label>
+                <input
+                type="text"
+                formControlName="title"
+                class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
+                />
+            </div>
+
+        </form>
+    </div>
+
+    <div modal-footer>
+        <div class="flex flex-row gap-2">
+            <app-button [text]="'CANCEL' | translate"
+                [buttonStyle]="'flex items-center justify-center font-medium rounded-lg hover:bg-amber-700 bg-gray-900 h-10'"
+                [contentStyle]="'flex items-center justify-center px-4 text-stone-200 font-serif gap-2 text-sm'"
+                (clicked)="closed.emit(undefined)"
+            />
+            <app-button [text]="(isEditModal() ? 'EDIT_WISHLIST' : 'CREATE_WISHLIST') | translate"
+                [disabled]="formInvalid()"
+                [buttonStyle]="'flex items-center justify-center font-medium rounded-lg hover:bg-amber-700 bg-gray-900 h-10'"
+                [contentStyle]="'flex items-center justify-center px-4 text-stone-200 font-serif gap-2 text-sm'"
+                (clicked)="createWishlistClicked()"
+            />
+        </div>
+        
+        
+    </div>
+</app-base-modal>
