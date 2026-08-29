@@ -12,7 +12,7 @@
     @for (menuOption of menuOptions(); track $index) {
     <div
       class="px-3 py-2 text-sm text-stone-700 hover:bg-stone-100 hover:cursor-pointer"
-      (click)="optionClicked.emit(menuOption)"
+      (click)="handleOptionClicked(menuOption)"
     >
       {{ menuOption.label  | translate}}
     </div>

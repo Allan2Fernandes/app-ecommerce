@@ -18,4 +18,9 @@ export class KebabMenu {
   toggleMenu() {
     this.showMenu.set(!this.showMenu());
   }
+
+  handleOptionClicked(menuOption: MenuOption) {
+    this.showMenu.set(false);
+    this.optionClicked.emit(menuOption)
+  }
 }

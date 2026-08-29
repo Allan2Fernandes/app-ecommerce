@@ -13,6 +13,10 @@ import { DeleteConfirmationModal } from '../../shared/delete-confirmation-modal/
 import { DeleteConfirmationModalData } from '../../../models/DeleteConfirmationModalData';
 import { TranslationService } from '../../../services/translation-service';
 import { ɵInternalFormsSharedModule } from "@angular/forms";
+import { CreateEditWishlistModal } from '../../shared/create-edit-wishlist-modal/create-edit-wishlist-modal';
+import { CreateWishlistModalData } from '../../../models/CreateWishlistModalData';
+import { Wishlist } from '../../../models/Wishlist';
+import { CreateWishlistData } from '../../../models/CreateWishlistData';
 
 @Component({
   selector: 'app-wishlists-component',
@@ -79,12 +83,21 @@ export class WishlistsComponent implements OnInit, OnDestroy{
   handleDeleteWishlist(id: string) {
     const subject = this.popupService.open<boolean, DeleteConfirmationModalData>(DeleteConfirmationModal, {title: this.translationService.translate('DELETE_WISHLIST'), body: this.translationService.translate('DELETE_WISHLIST_BODY')});
     subject.pipe(take(1)).subscribe(res => {
-      console.log(res);
       if(!Helper.isNullOrUndefined(res) && res) {
         this.wishlistStore.deleteWishlist(id);
       }
     });
     
+  }
+
+  handleCreateWishlist() {
+    const subject = this.popupService.open<CreateWishlistData | undefined, CreateWishlistModalData>(CreateEditWishlistModal, {title: this.translationService.translate('CREATE_WISHLIST'), body: this.translationService.translate('CREATE_WISHLIST_BODY')});
+    subject.pipe(take(1)).subscribe(res => {
+      if(!Helper.isNullOrUndefined(res)) {
+        this.wishlistStore.createWishlist(res);
+      }
+    });
+     
   }
 
   ngOnInit(): void {
