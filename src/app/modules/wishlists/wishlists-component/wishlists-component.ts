@@ -16,8 +16,9 @@ import { ɵInternalFormsSharedModule } from "@angular/forms";
 import { CreateEditWishlistModal } from '../../shared/create-edit-wishlist-modal/create-edit-wishlist-modal';
 import { CreateWishlistModalData } from '../../../models/CreateWishlistModalData';
 import { Wishlist } from '../../../models/Wishlist';
-import { CreateWishlistData } from '../../../models/CreateWishlistData';
+import { WishlistData } from '../../../models/WishlistData';
 import { TranslatePipe } from '../../../pipes/translate-pipe';
+import { EditWishlistModalData } from '../../../models/EditWishlistModalData';
 
 @Component({
   selector: 'app-wishlists-component',
@@ -78,7 +79,16 @@ export class WishlistsComponent implements OnInit, OnDestroy{
   }
 
   handleEditWishlist(id: string) {
-
+    const wishlistToUpdate = this.wishlistStore.wishlists().find(wishlist => wishlist.id === id);
+    if(Helper.isNullOrUndefined(wishlistToUpdate)) {
+      return;
+    }
+    const subject = this.popupService.open<WishlistData | undefined, EditWishlistModalData>(CreateEditWishlistModal, {title: this.translationService.translate('EDIT_WISHLIST'), body: this.translationService.translate('EDIT_WISHLIST_BODY'), wishlist: wishlistToUpdate});
+    subject.pipe(take(1)).subscribe(res => {
+      if(!Helper.isNullOrUndefined(res)) {
+        this.wishlistStore.editWishlist(wishlistToUpdate.id, res);
+      }
+    });
   }
 
   handleDeleteWishlist(id: string) {
@@ -92,7 +102,7 @@ export class WishlistsComponent implements OnInit, OnDestroy{
   }
 
   handleCreateWishlist() {
-    const subject = this.popupService.open<CreateWishlistData | undefined, CreateWishlistModalData>(CreateEditWishlistModal, {title: this.translationService.translate('CREATE_WISHLIST'), body: this.translationService.translate('CREATE_WISHLIST_BODY')});
+    const subject = this.popupService.open<WishlistData | undefined, CreateWishlistModalData>(CreateEditWishlistModal, {title: this.translationService.translate('CREATE_WISHLIST'), body: this.translationService.translate('CREATE_WISHLIST_BODY')});
     subject.pipe(take(1)).subscribe(res => {
       if(!Helper.isNullOrUndefined(res)) {
         this.wishlistStore.createWishlist(res);

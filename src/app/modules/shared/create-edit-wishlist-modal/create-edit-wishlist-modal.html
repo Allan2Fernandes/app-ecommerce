@@ -25,7 +25,7 @@
                 [contentStyle]="'flex items-center justify-center px-4 text-stone-200 font-serif gap-2 text-sm'"
                 (clicked)="closed.emit(undefined)"
             />
-            <app-button [text]="'CREATE_WISHLIST' | translate"
+            <app-button [text]="(isEditModal() ? 'EDIT_WISHLIST' : 'CREATE_WISHLIST') | translate"
                 [disabled]="formInvalid()"
                 [buttonStyle]="'flex items-center justify-center font-medium rounded-lg hover:bg-amber-700 bg-gray-900 h-10'"
                 [contentStyle]="'flex items-center justify-center px-4 text-stone-200 font-serif gap-2 text-sm'"

@@ -28,6 +28,7 @@
   "CREATE_WISHLIST_DESCRIPTION": "Group up your products",
   "LOGOUT": "Logout",
   "EDIT_WISHLIST": "Edit wishlist",
-  "VIEW_WISHLIST": "View wishlist"
-
+  "VIEW_WISHLIST": "View wishlist",
+  "CREATE_WISHLIST_BODY": "Enter the name of the new wishlist",
+  "EDIT_WISHLIST_BODY": "Enter the new name of the wishlist"
 }
