@@ -23,7 +23,7 @@
       [iconPath]="icons.WISHLIST"
     ></app-button>
     <app-button
-      text="Logout"
+      [text]="'LOGOUT' | translate"
       [buttonStyle]="'flex items-center justify-center font-medium rounded-lg hover:bg-amber-700 bg-gray-900 h-10'"
       [contentStyle]="'flex items-center justify-center px-4 text-stone-200 font-serif'"
       (clicked)="logout()"

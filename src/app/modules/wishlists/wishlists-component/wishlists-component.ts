@@ -17,10 +17,11 @@ import { CreateEditWishlistModal } from '../../shared/create-edit-wishlist-modal
 import { CreateWishlistModalData } from '../../../models/CreateWishlistModalData';
 import { Wishlist } from '../../../models/Wishlist';
 import { CreateWishlistData } from '../../../models/CreateWishlistData';
+import { TranslatePipe } from '../../../pipes/translate-pipe';
 
 @Component({
   selector: 'app-wishlists-component',
-  imports: [NavBar, Button, KebabMenu, ɵInternalFormsSharedModule],
+  imports: [NavBar, Button, KebabMenu, ɵInternalFormsSharedModule, TranslatePipe],
   templateUrl: './wishlists-component.html',
 })
 export class WishlistsComponent implements OnInit, OnDestroy{
